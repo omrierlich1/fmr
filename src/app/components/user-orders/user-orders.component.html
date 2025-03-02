@@ -1,0 +1,25 @@
+<div class="user-orders">
+  <!-- Add User Input -->
+  <div class="add-user">
+    <input [(ngModel)]="userName" placeholder="Enter user name" />
+    <button (click)="addUser()">Add User</button>
+  </div>
+  <!-- User selection dropdown -->
+  <div class="user-selection">
+    <label for="userSelect">Select a User</label>
+    <select id="userSelect" [(ngModel)]="selectedUserId" (change)="changeUser(selectedUserId)">
+      <option *ngFor="let user of users$ | async" [value]="user.id">{{ user.name }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="selectedUser$ | async as selectedUser; else noUser">
+    <div class="user-info">
+      <app-user-name [user]="selectedUser"></app-user-name>
+      <app-user-orders-summary [user]="selectedUser"></app-user-orders-summary>
+    </div>
+  </div>
+
+  <ng-template #noUser>
+    <p>No user selected.</p>
+  </ng-template>
+</div>

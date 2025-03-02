@@ -1,0 +1,61 @@
+.user-orders {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+}
+
+.add-user {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-user input {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.add-user button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-user button:hover {
+  background-color: #218838;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.user-selection {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.user-selection label {
+  margin-right: 10px;
+}
+
+.user-selection select {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
