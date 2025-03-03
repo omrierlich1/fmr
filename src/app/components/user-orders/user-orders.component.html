@@ -1,10 +1,8 @@
 <div class="user-orders">
-  <!-- Add User Input -->
   <div class="add-user">
     <input [(ngModel)]="userName" placeholder="Enter user name" />
     <button (click)="addUser()">Add User</button>
   </div>
-  <!-- User selection dropdown -->
   <div class="user-selection">
     <label for="userSelect">Select a User</label>
     <select id="userSelect" [(ngModel)]="selectedUserId" (change)="changeUser(selectedUserId)">

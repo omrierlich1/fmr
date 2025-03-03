@@ -11,7 +11,7 @@ import {Observable} from 'rxjs';
   selector: 'app-user-orders-summary',
   standalone: true,
   templateUrl: './user-orders-summary.component.html',
-  styleUrls: ['./user-orders-summary.component.css'],
+  styleUrls: ['./user-orders-summary.component.scss'],
   imports: [
     AsyncPipe,
     CurrencyPipe
@@ -28,7 +28,6 @@ export class UserOrdersSummaryComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['user'] && this.user.id) {
       console.log('this.userId', this.user.id);
-      // When userId changes, update the observable
       this.ordersSummery$ = this.store.select(selectUserOrdersSummary(this.user.id));
     }
   }

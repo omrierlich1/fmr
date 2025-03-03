@@ -7,11 +7,11 @@ import {
   deleteUser,
   setSelectedUser,
   loadUserDetailsSuccess
-} from './user.actions';  // Import actions
-import { User } from './user.model';  // Ensure User model is imported
+} from './user.actions';
+import { User } from './user.model';
 
 export interface UserState extends EntityState<User> {
-  selectedUserId: number | null;  // The selected user ID, nullable
+  selectedUserId: number | null;
 }
 
 export const userAdapter = createEntityAdapter<User>();
@@ -33,17 +33,12 @@ export const userReducer = createReducer(
   ),
 
   on(updateUser, (state, { user }) =>
-    userAdapter.updateOne({ id: user.id, changes: user }, state) // Updates the user data
-  ),
-
-  // Handling deleteUser action, removing a user from the state by id
-  on(deleteUser, (state, { id }) =>
-    userAdapter.removeOne(id, state) // Removes the user by id
+    userAdapter.updateOne({ id: user.id, changes: user }, state)
   ),
 
   on(setSelectedUser, (state, { userId }) => ({
     ...state,
-    selectedUserId: userId  // Update only the selectedUserId
+    selectedUserId: userId
   })),
 
   on(loadUserDetailsSuccess, (state, { userDetails }) => ({

@@ -7,7 +7,6 @@ export const selectOrderState =
 
 export const selectOrdersByUser = (userId: number) =>
   createSelector(selectOrderState, (state: OrderState): Order[] => {
-    // Ensure it returns an array of orders for the given userId
     console.log('selectOrdersByUser', userId, state);
     return Object.values(state.entities).filter(
       (order) => order?.userId === userId

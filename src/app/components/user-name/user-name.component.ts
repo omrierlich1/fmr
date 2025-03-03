@@ -5,7 +5,7 @@ import {User} from '../../store/user.model';
   selector: 'app-user-name',
   standalone: true,
   templateUrl: './user-name.component.html',
-  styleUrls: ['./user-name.component.css'],
+  styleUrls: ['./user-name.component.scss'],
 })
 export class UserNameComponent {
   @Input() user!: User;

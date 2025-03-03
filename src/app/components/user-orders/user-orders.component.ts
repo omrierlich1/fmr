@@ -14,7 +14,7 @@ import {loadOrders} from '../../store/order.actions';
   selector: 'app-user-orders',
   standalone: true,
   templateUrl: './user-orders.component.html',
-  styleUrls: ['./user-orders.component.css'],
+  styleUrls: ['./user-orders.component.scss'],
   imports: [
     UserNameComponent,
     UserOrdersSummaryComponent,
@@ -26,9 +26,9 @@ import {loadOrders} from '../../store/order.actions';
 })
 export class UserOrdersComponent {
   selectedUser$ = this.store.select(selectSelectedUser);
-  userName: string = '';  // Used for input field to add a new user
-  users$ = this.store.select(selectAllUsers); // Select all users
-  selectedUserId: number | null = null;  // Track selected user ID
+  userName: string = '';
+  users$ = this.store.select(selectAllUsers);
+  selectedUserId: number | null = null;
 
   constructor(private store: Store<AppState>) {
     store.dispatch(loadUsers());

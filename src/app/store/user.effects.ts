@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import {switchMap, map, catchError} from 'rxjs/operators';
-import { UserService } from '../services/user.service';  // The service for making API calls
+import { UserService } from '../services/user.service';
 import {
   loadUsers,
   loadUsersSuccess,
@@ -14,7 +14,7 @@ import {
 } from './user.actions';
 import {AppState} from './app.state';
 import {User} from './user.model';
-import {of} from 'rxjs';  // Import the actions
+import {of} from 'rxjs';
 
 @Injectable()
 export class UserEffects {
@@ -24,37 +24,25 @@ export class UserEffects {
     private store: Store<AppState>
   ) {}
 
-  // Effect for loading users
+
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadUsers), // Listen for the 'loadUsers' action
+      ofType(loadUsers),
       switchMap(() =>
-        this.userService.getUsers().pipe(  // Call the API service to get users
-          map((users: User[]) => loadUsersSuccess({ users })),  // On success, dispatch the 'loadUsersSuccess' action
+        this.userService.getUsers().pipe(
+          map((users: User[]) => loadUsersSuccess({ users })),
         )
       )
     )
   );
 
-  // Effect for adding a user
+
   addUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addUser), // Listen for the 'addUser' action
+      ofType(addUser),
       switchMap(({ user }) =>
-        this.userService.addUser(user).pipe(  // Call the API service to add the user
-          map(newUser => updateUser({ user: newUser })),  // On success, dispatch 'updateUser' with the new user
-        )
-      )
-    )
-  );
-
-  // Effect for deleting a user
-  deleteUser$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(deleteUser),  // Listen for the 'deleteUser' action
-      switchMap(({ id }) =>
-        this.userService.deleteUser(id).pipe(  // Call the API service to delete the user
-          map(() => loadUsers()),  // After deleting, reload the users
+        this.userService.addUser(user).pipe(
+          map(newUser => updateUser({ user: newUser })),
         )
       )
     )
@@ -62,11 +50,10 @@ export class UserEffects {
 
   loadUserDetails$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadUserDetails),  // Listen for the loadUserDetails action
+      ofType(loadUserDetails),
       switchMap((action) =>
-        this.userService.getUserDetails(action.userId!).pipe( // Call your API
+        this.userService.getUserDetails(action.userId!).pipe(
           switchMap((userDetails) => {
-            // Dispatch success action with the fetched user details
             return of(loadUserDetailsSuccess({ userDetails }));
           })
         )
