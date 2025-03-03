@@ -8,7 +8,6 @@ import {
   loadUsersSuccess,
   addUser,
   updateUser,
-  deleteUser,
   loadUserDetails,
   loadUserDetailsSuccess
 } from './user.actions';

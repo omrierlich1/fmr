@@ -4,7 +4,6 @@ import {
   loadUsersSuccess,
   addUser,
   updateUser,
-  deleteUser,
   setSelectedUser,
   loadUserDetailsSuccess
 } from './user.actions';

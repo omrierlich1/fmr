@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {delay, Observable, of} from 'rxjs';
 import {User} from '../store/user.model';
-import {deleteUser} from '../store/user.actions';
 import {UserDetails} from '../store/user-detail.model';
 
 @Injectable({
@@ -30,11 +29,5 @@ export class UserService {
       address: 'london'
     }
     return of(userDetail).pipe(delay(1000));
-  }
-
-  // Simulate an API call to delete a user
-  deleteUser(id: number): Observable<void> {
-    this.users = this.users.filter(user => user.id !== id);
-    return of();
   }
 }
